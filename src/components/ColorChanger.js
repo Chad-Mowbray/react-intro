@@ -1,31 +1,40 @@
 import React from 'react'
+import Button from './Button'
+import DisplayColor from './DisplayColor'
 
 
 class ColorChanger extends React.Component {
 
-
   state = {
-    currentBackgroundColor: "red",
+    currentBackgroundColor: "grey",
   }
 
-
-  handleClick = () => {
+  handleClick = (color) => {
     console.log('color should change...')
     this.setState({
-      currentBackgroundColor: "green"
+      currentBackgroundColor: color
     })
   }
 
-  render() {
+  createButtons = () => {
+    const colors = ["red", "orange", "green"]
+    return colors.map( (color, i) => <Button 
+                                      key={`button-${i}`} 
+                                      color={color} 
+                                      handleClick={this.handleClick}
+                                      />)
+  }
 
+  render() {
     const styles = {
       backgroundColor: this.state.currentBackgroundColor
     }
 
     return (
       <div>
-        <p>{this.props.title}</p>
-        <button style={styles} onClick={this.handleClick}>Change Color</button>
+        <p style={styles} >{this.props.title}</p>
+        <DisplayColor color={this.state.currentBackgroundColor}/>
+        {this.createButtons()}
       </div>
 
     )
