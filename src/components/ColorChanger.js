@@ -6,7 +6,6 @@ class ColorChanger extends React.Component {
 
   state = {
     currentBackgroundColor: "red",
-    somethingElse: true
   }
 
 
@@ -25,8 +24,8 @@ class ColorChanger extends React.Component {
 
     return (
       <div>
-        <p style={styles}>{this.props.title}</p>
-        <button onClick={this.handleClick}>Change Color</button>
+        <p>{this.props.title}</p>
+        <button style={styles} onClick={this.handleClick}>Change Color</button>
       </div>
 
     )
